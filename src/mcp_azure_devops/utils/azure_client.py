@@ -9,6 +9,7 @@ from typing import Tuple, Optional
 from azure.devops.connection import Connection
 from msrest.authentication import BasicAuthentication
 
+from dotenv import load_dotenv
 
 def get_credentials() -> Tuple[Optional[str], Optional[str]]:
     """
@@ -17,6 +18,7 @@ def get_credentials() -> Tuple[Optional[str], Optional[str]]:
     Returns:
         Tuple containing (pat, organization_url)
     """
+    load_dotenv()
     pat = os.environ.get("AZURE_DEVOPS_PAT")
     organization_url = os.environ.get("AZURE_DEVOPS_ORGANIZATION_URL")
     return pat, organization_url
